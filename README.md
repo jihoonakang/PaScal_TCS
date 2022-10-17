@@ -15,6 +15,42 @@ The PaScaL_TCS has the following features.
  4. Two transpose schemes in parallel fast Fourier transform (FFT) for the pressure Poisson equation solver.
  5. An explicit intermediate aggregation scheme for MPI-IO is implemented to mitigate the IO burden with a massive number of cores.
 
+# Directory structor
+The PaScaL_TCS distribution includes the following files and directories:
+
+```shell
+LICENSE                    # the MIT License
+PaScaL_TDMA                # kernel libraries for PaScaL_TCS
+run                        # simple test problem
+src                        # source files
+Makefile                   # make build file
+Makefile.inc               # compile options
+README                     # this file
+```
+
+# Build
+The commands below perform a default PaScaL_TCS build, 
+```shell
+make                       # build a PaScaL_TCS executable 
+```
+The ```make``` above contains building PaScaL_TDMA using ```PaScaL_TDMA/make```, and builds PaScaL_TCS execution file using ```src/make``` with automately linking PaScaL_TDMA. It creates the PaScaL_TCS execution file ```PaScaL_TCS.ex ``` in the directory ```run```.
+
+# Example test
+The example of the ```run``` directory is executed with the input file ```PARA_INPUT.dat```.
+```shell
+mpirun -np 8 ./PaScaL_TCS.ex 
+```
+
+The example ```PARA_INPUT.dat``` file contains the information for NOB natural convection simulation of $\Delta=10$ with $Pr=1$ at $Ra=100$ in $512\times128\times256$ meshes using 8 MPI processes. It will make ```run/data/1_continue/``` and binary outputs as follows:
+```shell
+cont_time.bin               # Current dimensionless time for file write and dt
+cont_U.bin                  # Velocity field in x-direction for file write
+cont_V.bin                  # Velocity field in y-direction for file write
+cont_W.bin                  # Velocity field in z-direction for file write
+cont_P.bin                  # Pressure field for file write
+cont_THETA.bin              # Temperature field for file write
+```
+
 # Authors
 - Ki-Ha Kim (k-kiha@yonsei.ac.kr), Multi-Physics Modeling and Computation Lab., Yonsei University
 - Ji-Hoon Kang (jhkang@kisti.re.kr), Korea Institute of Science and Technology Information
