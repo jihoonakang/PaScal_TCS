@@ -15,7 +15,7 @@ The PaScaL_TCS has the following features.
  4. Two transpose schemes in parallel fast Fourier transform (FFT) for the pressure Poisson equation solver.
  5. An explicit intermediate aggregation scheme for MPI-IO is implemented to mitigate the IO burden with a massive number of cores.
 
-# Directory structor
+# Directory structure
 The PaScaL_TCS distribution includes the following files and directories:
 
 ```shell
