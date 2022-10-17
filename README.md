@@ -15,28 +15,16 @@ The PaScaL_TCS has the following features.
  4. Two transpose schemes in parallel fast Fourier transform (FFT) for the pressure Poisson equation solver.
  5. An explicit intermediate aggregation scheme for MPI-IO is implemented to mitigate the IO burden with a massive number of cores.
 
-# Directory structure
-The PaScaL_TCS distribution includes the following files and directories:
-
-```shell
-LICENSE                    # the MIT License
-PaScaL_TDMA                # kernel libraries for PaScaL_TCS
-run                        # simple test problem
-src                        # source files
-Makefile                   # make build file
-Makefile.inc               # compile options
-README                     # this file
-```
-
 # Build
-The commands below perform a default PaScaL_TCS build, 
+```make``` command at PaScaL_TCS root directory builds a PaScaL_TCS executable binary file, 
 ```shell
-make                       # build a PaScaL_TCS executable 
+make                       # build a PaScaL_TCS executable file
 ```
-The ```make``` above contains building PaScaL_TDMA using ```PaScaL_TDMA/make```, and builds PaScaL_TCS execution file using ```src/make``` with automately linking PaScaL_TDMA. It creates the PaScaL_TCS execution file ```PaScaL_TCS.ex ``` in the directory ```run```.
+It also builds a PaScaL_TDMA library using ```PaScaL_TDMA/make``` and links the library to the PaScaL_TCS executable binary ```PaScaL_TCS.ex``` using a makefile in the ```src/make``` directory.
+It copies the ```PaScaL_TCS.ex ``` execution file into the ```run``` directory .
 
 # Example test
-The example of the ```run``` directory is executed with the input file ```PARA_INPUT.dat```.
+The example case is executed with the input file ```PARA_INPUT.dat``` in the ```run``` directory .
 ```shell
 mpirun -np 8 ./PaScaL_TCS.ex 
 ```
